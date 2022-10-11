@@ -70,10 +70,89 @@ function nomedousuario(input) {
     return input.email.split('@')[0];
 }
 
+function jacawars(input) {
+    let d = 100;
+    let traveled = (Math.pow(input.v, 2))*Math.sin(2*input.theta)/9.8;
+    let error = traveled - d;
+    if (error > 2) {
+        return 1;
+    } else if (error < -2) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+function anobissexto(input) {
+    return (input.ano % 4 == 0 && input.ano % 100 != 0) || input.ano % 400 == 0;
+}
+
+function volumedapizza(input) {
+    let volume = Math.PI*Math.pow(input.z, 2)*input.a;
+    return Math.round(volume);
+}
+
+function mru(input) {
+    return input.s0 + input.v*input.t;
+}
+
+function invertestring(input) {
+    return input.string.split('').reverse().join('');
+}
+
+function somavalores(input) {
+    let soma = 0;
+    Object.entries(input).forEach(([key, value]) => {
+        soma += parseInt(value);
+    });
+    return soma;
+}
+
+function nesimoprimo(input) {
+    return 0;
+}
+
+function maiorprefixocomum(input) {
+    return 0;
+}
+
+function somasegundomaioremenornumeros(input) {
+    return 0;
+}
+
+function contapalindromos(input) {
+    return 0;
+}
+
+function somadestringsdeints(input) {
+    return 0;
+}
+
+function somacomrequisicoes(input) {
+    return 0;
+}
+
+function cacaaotesouro(input) {
+    return 0;
+}
+
 async function solve() {
     answers = [soma(questionParameters[0]), 
     tamanhostring(questionParameters[1]), 
-    nomedousuario(questionParameters[2])];
+    nomedousuario(questionParameters[2]),
+    jacawars(questionParameters[3]),
+    anobissexto(questionParameters[4]),
+    volumedapizza(questionParameters[5]),
+    mru(questionParameters[6]),
+    invertestring(questionParameters[7]),
+    somavalores(questionParameters[8]),
+    nesimoprimo(questionParameters[9]),
+    maiorprefixocomum(questionParameters[10]),
+    somasegundomaioremenornumeros(questionParameters[11]),
+    contapalindromos(questionParameters[12]),
+    somadestringsdeints(questionParameters[13]),
+    somacomrequisicoes(questionParameters[14]),
+    cacaaotesouro(questionParameters[15])];
 }
 
 async function main() {

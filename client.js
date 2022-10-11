@@ -5,12 +5,11 @@ var token;
 
 function writeExercises(parsedData)
 {
-    console.log(parsedData);
     var output = "";
     Object.entries(parsedData).forEach(([key, value]) => {
         output += '<h2>'+key+'</h2>\n<ul>\n';
         Object.entries(value).forEach(([key, subvalue]) => {
-            output += '<li>'+key+': '+subvalue+'</li>\n';
+            output += '<li>'+key+': '+JSON.stringify(subvalue)+'</li>\n';
         });
         output += '</ul>\n';
     });
@@ -19,7 +18,7 @@ function writeExercises(parsedData)
             return console.log(err);
         }
         else {
-            console.log(output + '-> exercises.html');
+            console.log('Exercises saved to exercises.html');
         }
     });
 }

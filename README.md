@@ -15,15 +15,21 @@ Now, follow the steps below to start running the JavaScript code:
 Create a folder to store your answers (it's a good time to put everything in git in a private repository);
 "Install NodeJS" to be able to run JavaScript code from the terminal
 Install axios to make JavaScript requests:
+```
 $ npm install axios
+```
 Inside that folder, create a file called client.js (actually it can have any name);
 In that file, add the following content:
+```
 const axios = require("axios");
 axes
   .get("https://catfact.ninja/fact")
   .then((response) => console.log(response.data.fact));
+```
 To run this file, use the command:
+```
 $ node client.js
+```
 If the code is already in git, don't forget to put a .gitignore for NodeJS projects;
 Okay, you're all set to start the exercises!
 If you prefer, you can create an HTML page and load the JavaScript in a script tag. An advantage of this approach is that you can use the page to view useful information, such as the result of submissions. Feel free to implement as you like.
@@ -47,10 +53,10 @@ The list of exercises is represented by an object (can be used like Python's dic
 
 title: string with the question title;
 description: string with the question description;
-input: object with the input values ​​of the problem - this object is created with random values ​​for each new token;
+input: object with the input values of the problem - this object is created with random values for each new token;
 score: question score.
 Example:
-
+```
 {
   multiplication: {
     title: 'Multiplication of values',
@@ -65,7 +71,8 @@ Example:
     score: 0.5
   },
 }
+```
 ## 4. Solving the exercises
 Now that you have the list of exercises, you can solve them however you like. Some of them are like puzzles. You will need to make additional requests to find out the final result.
 
-Input values ​​always change (with each new token generated). For that reason, your code should work for random inputs, not just the one you rec
+Input values always change (with each new token generated). For that reason, your code should work for random inputs, not just the one you rec

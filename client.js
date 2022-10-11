@@ -52,12 +52,9 @@ async function submitAnswers(answers) {
     for (i = 0; i < questionSlugs.length; i++)
     {
         console.log('Submitting answer for '+questionSlugs[i]);
-        promise = new Promise((resolve, reject) => {
-            axios
-                .post("https://tecweb-js.insper-comp.com.br/exercicio/"+questionSlugs[i], {"resposta": answers[i]}, {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
-                .then((response) => console.log(response.data));
-        });
-        await promise;
+        await axios
+            .post("https://tecweb-js.insper-comp.com.br/exercicio/"+questionSlugs[i], {"resposta": answers[i]}, {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
+            .then((response) => console.log(response.data));
     }
 }
 
@@ -81,7 +78,6 @@ async function solve() {
 
 async function main() {
     await getExercises();
-    console.log(questionParameters);
     await solve();
     await submitAnswers(answers);
 }

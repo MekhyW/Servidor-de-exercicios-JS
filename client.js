@@ -102,33 +102,52 @@ function invertestring(input) {
 
 function somavalores(input) {
     let soma = 0;
-    Object.entries(input).forEach(([key, value]) => {
+    Object.entries(input.objeto).forEach(([key, value]) => {
         soma += parseInt(value);
     });
     return soma;
 }
 
 function nesimoprimo(input) {
-    return 0;
-}
+    let count = 1;
+    const isPrime = num => {
+        for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+            if(num % i === 0) return false; 
+        return num > 1;
+    }
+    for (i=2; count<input.n+1; i++) {
+        if (isPrime(i)) {
+            count++;
+        }
+    }
+    return i-1;
+ }
 
 function maiorprefixocomum(input) {
     return 0;
 }
 
 function somasegundomaioremenornumeros(input) {
-    return 0;
+    sorted = input.numeros.sort(function(a, b){return a - b});
+    return sorted[1] + sorted[sorted.length-2];
 }
 
 function contapalindromos(input) {
-    return 0;
+    palindromes = 0;
+    for (i=0; i<input.palavras.length; i++) {
+        if (input.palavras[i] == input.palavras[i].split('').reverse().join('')) {
+            palindromes++;
+        }
+    }
+    return palindromes;
 }
 
 function somadestringsdeints(input) {
-    return 0;
+    numbers = input.strings.map(x => parseInt(x));
+    return numbers.reduce((a, b) => a + b);
 }
 
-function somacomrequisicoes(input) {
+async function somacomrequisicoes(input) {
     return 0;
 }
 

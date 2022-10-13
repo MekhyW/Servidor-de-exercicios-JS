@@ -148,10 +148,17 @@ function somadestringsdeints(input) {
 }
 
 async function somacomrequisicoes(input) {
-    return 0;
+    let endpoints = input.endpoints;
+    let soma = 0;
+    for (i=0; i<endpoints.length; i++) {
+        await axios
+            .get(endpoints[i], {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
+            .then((response) => soma += response.data);
+    }
+    return soma;
 }
 
-function cacaaotesouro(input) {
+async function cacaaotesouro(input) {
     return 0;
 }
 
@@ -170,8 +177,8 @@ async function solve() {
     somasegundomaioremenornumeros(questionParameters[11]),
     contapalindromos(questionParameters[12]),
     somadestringsdeints(questionParameters[13]),
-    somacomrequisicoes(questionParameters[14]),
-    cacaaotesouro(questionParameters[15])];
+    await somacomrequisicoes(questionParameters[14]),
+    await cacaaotesouro(questionParameters[15])];
 }
 
 async function main() {

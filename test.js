@@ -32,22 +32,19 @@ async function getExercises()
         .then((response) => writeExercises(JSON.parse(JSON.stringify(response.data))));
 }
 
-async function somacomrequisicoes(input) {
-    let endpoints = input.endpoints;
-    let soma = 0;
-    console.log(endpoints);
-    for (i=0; i<endpoints.length; i++) {
-        console.log('Requesting '+endpoints[i]);
+async function cacaaotesouro(input) {
+    let endpoint = input.inicio;
+    while (isNaN(endpoint)) {
         await axios
-            .get(endpoints[i], {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
-            .then((response) => soma += response.data);
+            .get(endpoint, {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
+            .then((response) => endpoint = response.data);
     }
-    console.log(soma);
-    return soma;
+    console.log(endpoint);
+    return endpoint;
 }
 
 async function test() {
     await getExercises();
-    await console.log(somacomrequisicoes(await questionParameters[14]));
+    await console.log(await cacaaotesouro(questionParameters[15]));
 }
 test();

@@ -72,7 +72,8 @@ function nomedousuario(input) {
 
 function jacawars(input) {
     let d = 100;
-    let traveled = (Math.pow(input.v, 2))*Math.sin(2*input.theta)/9.8;
+    let radians = input.theta * Math.PI / 180;
+    let traveled = (Math.pow(input.v, 2))*Math.sin(2*radians)/9.8;
     let error = traveled - d;
     if (error > 2) {
         return 1;
@@ -159,7 +160,13 @@ async function somacomrequisicoes(input) {
 }
 
 async function cacaaotesouro(input) {
-    return 0;
+    let endpoint = input.inicio;
+    while (isNaN(endpoint)) {
+        await axios
+            .get(endpoint, {headers: {"Authorization": "Bearer "+token, "Content-Type": "application/json"}})
+            .then((response) => endpoint = response.data);
+    }
+    return endpoint;
 }
 
 async function solve() {
